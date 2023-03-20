@@ -24,9 +24,18 @@
 
 body {
     min-height: 100vh;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    background-color: var(--Red) !important;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
     font-size: var(--Fsize);
+
+    div {
+        height: 100vh;
+        background: url(../images/bg-intro-desktop.png);
+    }
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }

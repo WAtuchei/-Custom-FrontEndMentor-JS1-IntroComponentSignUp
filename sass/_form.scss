@@ -3,3 +3,10 @@
     height: 100%;
     border: 1px solid red;
 }
+
+#trialForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

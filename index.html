@@ -13,24 +13,34 @@
    <title>Frontend Mentor | Intro component with sign up form</title>
 </head>
 <body>
-   <section class="hero-section">
-      Learn to code by watching others
+   <div>
+      <main>
+         <section class="hero-section">
+            <h1>Learn to code by watching others</h1>
    
-      See how experienced developers solve problems in real-time. Watching scripted tutorials is great,
-      but understanding how developers think is invaluable.
-   </section>
+            <p>See how experienced developers solve problems in real-time. Watching scripted tutorials is great,
+               but understanding how developers think is invaluable.</p>
+         </section>
    
-   <section class="form-section">
-      Try it free 7 days then $20/mo. thereafter
+         <section class="form-section">
+               <p class="trial-header w-100 text-center">Try it free 7 days then $20/mo. thereafter</p>
    
-      First Name
-      Last Name
-      Email Address
-      Password
+               <form id="trialForm" novalidate>
+                  <input id="firstName" class="w-100 mb-3 px-4 py-2 border" type="text" name="fname"
+                     placeholder="First Name">
+                  <input id="lastName" class="w-100 mb-3 px-4 py-2 border" type="text" name="lname"
+                     placeholder="Last Name">
+                  <input id="userEmail" class="w-100 mb-3 px-4 py-2 border" type="email" name="email"
+                     placeholder="Email Address">
+                  <input id="password" class="w-100 mb-3 px-4 py-2 border" type="password" name="password"
+                     placeholder="Password">
    
-      Claim your free trial
+                  <button class="w-100 btn btn-success" type="submit">Claim your free trial</button>
+               </form>
    
-      By clicking the button, you are agreeing to our Terms and Services
-   </section>
+               <p class="w-100 text-center">By clicking the button, you are agreeing to our <a href="#">Terms and Services</a></p>
+         </section>
+      </main>
+   </div>
 </body>
 </html>

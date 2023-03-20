@@ -16,11 +16,19 @@
 
 body {
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  background-color: var(--Red) !important;
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   font-size: var(--Fsize);
+}
+body div {
+  height: 100vh;
+  background: url(../images/bg-intro-desktop.png);
+}
+
+main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .hero-section {
@@ -33,4 +41,11 @@ body {
   width: 100%;
   height: 100%;
   border: 1px solid red;
+}
+
+#trialForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=index.css.map */
