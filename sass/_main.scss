@@ -1,20 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 // 'Poppins', sans-serif;
 
-:root {
-    // Primary
-    --Red: hsl(0, 100%, 74%) ;
-    --Green: hsl(154, 59%, 51%);
+ // Primary
+ $Red: hsl(0, 100%, 74%);
+ $Green: hsl(154, 59%, 51%);
 
-    // Accent
-    --Blue: hsl(248, 32%, 49%);
+ // Accent
+ $Blue: hsl(248, 32%, 49%);
 
-    // Neutral
-    --DarkBlue: hsl(249, 10%, 26%);
-    --GrayishBlue: hsl(246, 25%, 77%);
+ // Neutral
+ $DarkBlue: hsl(249, 10%, 26%);
+ $GrayishBlue: hsl(246, 25%, 77%);
+ $Fsize: 16px;
 
-    --Fsize: 16px;
-}
+ @mixin DFlex($dir) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $dir;
+ }
 
 * {
     margin: 0;
@@ -24,18 +28,29 @@
 
 body {
     min-height: 100vh;
-    background-color: var(--Red) !important;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 500;
-    font-size: var(--Fsize);
-
-    div {
-        height: 100vh;
-        background: url(../images/bg-intro-desktop.png);
-    }
+    background-color: $Red !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: $Fsize;
+}
+body>div {
+    @include DFlex(row);
+    min-height: 100vh;
+    background: url(../images/bg-intro-desktop.png);
 }
 
 main {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+}
+
+@media screen and (min-width: 100px) and (max-width: 720px) {
+    main {
+        max-width: 360px;
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch;
+        align-items: stretch;
+        text-align: center;
+    }
 }

@@ -1,12 +1,107 @@
+@use 'main';
+
+.form-container {
+    @include main.DFlex(column);
+}
+
+.trial-container {
+    @include main.DFlex(row);
+    p {
+        padding: 1rem 1.5rem;
+        background-color: main.$Blue;
+        border-radius: 10px;
+        font-weight: 400 !important;
+    }
+    span {
+        font-weight: 700 !important;
+    }
+}
+
 .form-section {
-    width: 100%;
-    height: 100%;
-    border: 1px solid red;
+    min-width: 360px;
+    max-width: 450px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px main.$DarkBlue;
 }
 
 #trialForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include main.DFlex(column);
+    padding: 1.7rem;
+
+    input {
+        all: unset;
+        box-sizing: border-box;
+        caret-color: main.$Blue;
+        border: 1.5px solid rgba(128, 128, 128, 0.219);
+        border-radius: 5px;   
+    }
+    input:focus {
+        border: 1.5px solid main.$Blue;
+    }
+    ::placeholder {
+        font-size: 12px;
+        font-weight: 600;
+    }
+    button {
+        all: unset;
+        width: 100%;
+        padding: .8rem 2rem;
+        box-sizing: border-box;
+        background-color: main.$Green;
+        border-radius: 5px;
+        color: #fff;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 500;
+        cursor: pointer;
+    }
+    button:hover {
+        filter: brightness(110%);
+    }
+    button:active {
+        filter: brightness(110%);
+        box-shadow: 0 0 10px gray inset;
+    }
+    p {
+        font-size: 9px;
+        color: main.$GrayishBlue;
+
+        a {
+            text-decoration: none;
+            color: main.$Red;
+            font-weight: 600;
+        }
+    }
+}
+
+@media screen and (min-width: 100px) and (max-width: 720px) {
+    .trial-container {
+        padding: 0 .3rem;
+        p {
+            padding: 1rem 3rem;
+            background-color: main.$Blue;
+            border-radius: 10px;
+            font-weight: 400 !important;
+        }
+        span {
+            font-weight: 700 !important;
+        }
+    }
+    .form-section {
+        padding: 0 1rem;
+        min-width: 310px;
+        max-width: 350px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px main.$DarkBlue;
+    }
+    
+    #trialForm {
+        @include main.DFlex(column);
+        padding: 1.5rem .7rem;
+    }
+    input, input:focus, ::placeholder {
+        text-align: start !important;
+    }
 }

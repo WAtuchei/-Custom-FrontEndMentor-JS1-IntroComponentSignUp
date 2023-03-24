@@ -1,5 +1,22 @@
+@use 'main';
+
 .hero-section {
-    width: 100%;
-    height: 100%;
-    border: 1px solid red;
+    @include main.DFlex(column);
+    
+    h1 {
+        font-weight: 700;
+    }
+    p {
+        font-weight: 400 !important;
+    }
+}
+
+@media screen and (min-width: 100px) and (max-width: 720px) {
+    .hero-section {
+        padding: .5rem 2rem;
+
+        p {
+            margin-top: 1rem;
+        }
+    }
 }

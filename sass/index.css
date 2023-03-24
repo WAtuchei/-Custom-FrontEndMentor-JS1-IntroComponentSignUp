@@ -1,13 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-:root {
-  --Red: hsl(0, 100%, 74%) ;
-  --Green: hsl(154, 59%, 51%);
-  --Blue: hsl(248, 32%, 49%);
-  --DarkBlue: hsl(249, 10%, 26%);
-  --GrayishBlue: hsl(246, 25%, 77%);
-  --Fsize: 16px;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -16,13 +7,18 @@
 
 body {
   min-height: 100vh;
-  background-color: var(--Red) !important;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
-  font-size: var(--Fsize);
+  background-color: hsl(0, 100%, 74%) !important;
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: 16px;
 }
-body div {
-  height: 100vh;
+
+body > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  min-height: 100vh;
   background: url(../images/bg-intro-desktop.png);
 }
 
@@ -31,21 +27,148 @@ main {
   grid-template-columns: repeat(2, 1fr);
 }
 
+@media screen and (min-width: 100px) and (max-width: 720px) {
+  main {
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    text-align: center;
+  }
+}
 .hero-section {
-  width: 100%;
-  height: 100%;
-  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.hero-section h1 {
+  font-weight: 700;
+}
+.hero-section p {
+  font-weight: 400 !important;
+}
+
+@media screen and (min-width: 100px) and (max-width: 720px) {
+  .hero-section {
+    padding: 0.5rem 2rem;
+  }
+  .hero-section p {
+    margin-top: 1rem;
+  }
+}
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.trial-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.trial-container p {
+  padding: 1rem 1.5rem;
+  background-color: hsl(248, 32%, 49%);
+  border-radius: 10px;
+  font-weight: 400 !important;
+}
+.trial-container span {
+  font-weight: 700 !important;
 }
 
 .form-section {
-  width: 100%;
-  height: 100%;
-  border: 1px solid red;
+  min-width: 360px;
+  max-width: 450px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px hsl(249, 10%, 26%);
 }
 
 #trialForm {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  padding: 1.7rem;
+}
+#trialForm input {
+  all: unset;
+  box-sizing: border-box;
+  caret-color: hsl(248, 32%, 49%);
+  border: 1.5px solid rgba(128, 128, 128, 0.219);
+  border-radius: 5px;
+}
+#trialForm input:focus {
+  border: 1.5px solid hsl(248, 32%, 49%);
+}
+#trialForm ::placeholder {
+  font-size: 12px;
+  font-weight: 600;
+}
+#trialForm button {
+  all: unset;
+  width: 100%;
+  padding: 0.8rem 2rem;
+  box-sizing: border-box;
+  background-color: hsl(154, 59%, 51%);
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+}
+#trialForm button:hover {
+  filter: brightness(110%);
+}
+#trialForm button:active {
+  filter: brightness(110%);
+  box-shadow: 0 0 10px gray inset;
+}
+#trialForm p {
+  font-size: 9px;
+  color: hsl(246, 25%, 77%);
+}
+#trialForm p a {
+  text-decoration: none;
+  color: hsl(0, 100%, 74%);
+  font-weight: 600;
+}
+
+@media screen and (min-width: 100px) and (max-width: 720px) {
+  .trial-container {
+    padding: 0 0.3rem;
+  }
+  .trial-container p {
+    padding: 1rem 3rem;
+    background-color: hsl(248, 32%, 49%);
+    border-radius: 10px;
+    font-weight: 400 !important;
+  }
+  .trial-container span {
+    font-weight: 700 !important;
+  }
+  .form-section {
+    padding: 0 1rem;
+    min-width: 310px;
+    max-width: 350px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px hsl(249, 10%, 26%);
+  }
+  #trialForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1.5rem 0.7rem;
+  }
+  input, input:focus, ::placeholder {
+    text-align: start !important;
+  }
 }/*# sourceMappingURL=index.css.map */

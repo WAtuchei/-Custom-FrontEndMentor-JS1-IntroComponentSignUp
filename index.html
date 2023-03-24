@@ -13,32 +13,39 @@
    <title>Frontend Mentor | Intro component with sign up form</title>
 </head>
 <body>
-   <div>
-      <main>
-         <section class="hero-section">
+   <div class="p-3 p-md-4">
+      <main class="p-0 p-md-2 p-lg-5">
+         <section class="hero-section p-md-4 p-lg-5 text-light">
             <h1>Learn to code by watching others</h1>
    
             <p>See how experienced developers solve problems in real-time. Watching scripted tutorials is great,
                but understanding how developers think is invaluable.</p>
          </section>
-   
-         <section class="form-section">
-               <p class="trial-header w-100 text-center">Try it free 7 days then $20/mo. thereafter</p>
-   
-               <form id="trialForm" novalidate>
-                  <input id="firstName" class="w-100 mb-3 px-4 py-2 border" type="text" name="fname"
-                     placeholder="First Name">
-                  <input id="lastName" class="w-100 mb-3 px-4 py-2 border" type="text" name="lname"
-                     placeholder="Last Name">
-                  <input id="userEmail" class="w-100 mb-3 px-4 py-2 border" type="email" name="email"
-                     placeholder="Email Address">
-                  <input id="password" class="w-100 mb-3 px-4 py-2 border" type="password" name="password"
-                     placeholder="Password">
-   
-                  <button class="w-100 btn btn-success" type="submit">Claim your free trial</button>
-               </form>
-   
-               <p class="w-100 text-center">By clicking the button, you are agreeing to our <a href="#">Terms and Services</a></p>
+         
+         <!-- form section -->
+         <section class="form-container p-4">
+            <div>
+               <div class="trial-container">
+                  <p class="w-100 px-sm-2 py-sm-3 px-lg-4 py-lg-3 text-center text-light"><span>Try it free 7 days</span> then $20/mo. thereafter</p>
+               </div>
+      
+               <div class="form-section">
+                  <form id="trialForm" novalidate>
+                     <input id="firstName" class="w-100 mb-3 px-4 py-2" type="text" name="fname"
+                        placeholder="First Name">
+                     <input id="lastName" class="w-100 mb-3 px-4 py-2" type="text" name="lname"
+                        placeholder="Last Name">
+                     <input id="userEmail" class="w-100 mb-3 px-4 py-2" type="email" name="email"
+                        placeholder="Email Address">
+                     <input id="password" class="w-100 mb-3 px-4 py-2" type="password" name="password"
+                        placeholder="Password">
+      
+                     <button type="submit">Claim your free trial</button>
+
+                     <p class="w-100 mt-2 text-center">By clicking the button, you are agreeing to our <a href="#">Terms and Services</a></p>
+                  </form>                  
+               </div>
+            </div>
          </section>
       </main>
    </div>
