@@ -75,6 +75,27 @@
     }
 }
 
+// Error Message
+.input-container {
+    position: relative;
+
+    .error-icon {
+        position: absolute;
+        top: 10px;
+        right: 20px;    
+        pointer-events: none;
+    }
+    .error-message {
+        margin: 0;
+        font-size: 10px;
+        font-weight: 500;
+        font-style: italic;
+        color: red !important;
+        text-align: end;
+        transform: translateY(-90%);    
+    }
+}
+
 @media screen and (min-width: 100px) and (max-width: 720px) {
     .trial-container {
         padding: 0 .3rem;

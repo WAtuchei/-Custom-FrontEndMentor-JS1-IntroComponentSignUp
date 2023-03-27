@@ -1,10 +1,10 @@
 "use strict";
 
-const firstName = document.getElementById('firstName'),
+const   trialForm = document.getElementById('trialForm'),
+    firstName = document.getElementById('firstName'),
     lastName = document.getElementById('lastName'),
     userEmail = document.getElementById('userEmail'),
-    password = document.getElementById('password'),
-    trialForm = document.getElementById('trialForm');
+    password = document.getElementById('password');
 
 
 // Mail Check

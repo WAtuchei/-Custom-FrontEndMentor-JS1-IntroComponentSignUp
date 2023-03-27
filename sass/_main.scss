@@ -36,7 +36,7 @@ body {
 body>div {
     @include DFlex(row);
     min-height: 100vh;
-    background: url(../images/bg-intro-desktop.png);
+    background-image: url(../images/bg-intro-desktop.png);
 }
 
 main {
