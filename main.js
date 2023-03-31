@@ -14,8 +14,14 @@ const nameChecked = (input, input2) => {
 
     if (regEx.test(testLastName, testFirstName)) {
         const allName = [testFirstName, testLastName];
-        const capitalizedName = allName.map((name) => name.charAt(0).toUpperCase() + name.slice(1));
 
+        const capitalizedName = allName.map((name) => {
+            if ((lengthChecked(name, 1)) === true) {
+            name.charAt(0).toUpperCase() + name.slice(1);
+
+            return name;
+            }
+        });
         console.log(capitalizedName);
         console.log('name pass');
         return true;
@@ -42,13 +48,14 @@ const mailChecked = (input) => {
 
 // Length Check
 const lengthChecked = (input, min) => {
-    const testLength = input.value.trim();
+    if (input === "") {
+        console.log(`${input.name} cannot be empty`);
 
-    if (testLength === "") {
-        console.log(`this is ${input.name}`);
-    } else if (testLength < min) {
-        console.log('lower min');
+    } else if (input < min) {
+        console.log(`Looks like this is not ${input.name}`);
+        
     } else {
+        console.log('length pass');
         return true;
     }
 }
