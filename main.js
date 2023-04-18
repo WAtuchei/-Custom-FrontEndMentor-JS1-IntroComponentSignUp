@@ -8,26 +8,18 @@ const   trialForm = document.getElementById('trialForm'),
 
 // Name check 
 const nameChecked = (input, input2) => {
-    const regEx = /^([A-Za-z]+[\s]?)+$/;
-    const testFirstName = input.value.trim().toLowerCase();
-    const testLastName = input2.value.trim().toLowerCase();
+    const regEx = /^[a-zA-Z]+$/,
+        nameF = input.value.trim().toLowerCase(),
+        nameL = input2.value.trim().toLowerCase();
 
-    if (regEx.test(testLastName, testFirstName)) {
-        const allName = [testFirstName, testLastName];
+    const testFirstName = regEx.test(nameF),
+        testLastName = regEx.test(nameL);
 
-        const capitalizedName = allName.map((name) => {
-            if ((lengthChecked(name, 1)) === true) {
-            name.charAt(0).toUpperCase() + name.slice(1);
-
-            return name;
-            }
-        });
-        console.log(capitalizedName);
-        console.log('name pass');
+    if ((testFirstName && testLastName) === true) {
+        console.log('double pass');
+        // console.log(nameF.charAt(0).toUpperCase() + nameF.slice(1));
         return true;
 
-    } else {
-        console.log('name fail');
     }
 }
 
@@ -42,20 +34,18 @@ const mailChecked = (input) => {
 
     } else {
         // formError();
-        console.log(`mail Fail`);
     }
 }
 
 // Length Check
 const lengthChecked = (input, min) => {
-    if (input === "") {
+    if (input.value === "") {
         console.log(`${input.name} cannot be empty`);
 
-    } else if (input < min) {
+    } else if (input.value.length < min) {
         console.log(`Looks like this is not ${input.name}`);
         
     } else {
-        console.log('length pass');
         return true;
     }
 }
@@ -69,10 +59,23 @@ const formError = (input) => {
 trialForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const yourName = nameChecked(firstName, lastName);
-    const eMail = mailChecked(userEmail);
+    const yourName = nameChecked(firstName, lastName),
+        eMail = mailChecked(userEmail),
+        lengthArr = [
+            lengthChecked(firstName, 2),
+            lengthChecked(lastName, 2),
+            lengthChecked(userEmail, 6),
+        ];
 
-    switch (yourName && eMail) {
+    const formArr = [yourName, eMail, ...lengthArr]
+    const formArrChecked = (arr) => arr.every(Boolean);
+
+    const formAllChecked = formArrChecked(formArr);
+
+    console.log(formAllChecked);    
+    console.log(formArr);
+
+    switch (formAllChecked) {
         case true:
             console.log('Form Pass');
             break;
