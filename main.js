@@ -7,18 +7,16 @@ const   trialForm = document.getElementById('trialForm'),
     password = document.getElementById('password');
 
 // Name check 
-const nameChecked = (input, input2) => {
+const nameChecked = (input) => {
     const regEx = /^[a-zA-Z]+$/,
-        nameF = input.value.trim().toLowerCase(),
-        nameL = input2.value.trim().toLowerCase();
+        nameT = input.value.trim().toLowerCase(),
+        testName = regEx.test(nameT);
 
-    const testFirstName = regEx.test(nameF),
-        testLastName = regEx.test(nameL);
-
-    if ((testFirstName && testLastName) === true) {
-        console.log('double pass');
-        // console.log(nameF.charAt(0).toUpperCase() + nameF.slice(1));
+    if (testName === true) {
         return true;
+    } 
+    else {
+        formError((input), `Looks like this is not a ${input.name}`);
     }
 }
 
@@ -28,11 +26,10 @@ const mailChecked = (input) => {
     const testMail = input.value.trim().toLowerCase();
 
     if (regEx.test(testMail)) {
-        console.log(`mail Pass ${testMail}`);
         return true;
-
-    } else {
-        formError(input, `Looks like this is not ${input.name}`);
+    } 
+    else {
+        formError(input, `Looks like this is not an ${input.name}`);
     }
 }
 
@@ -42,9 +39,17 @@ const lengthChecked = (input, min) => {
         formError(input, `${input.name} cannot be empty`);
 
     } else if (input.value.length < min) {
-        formError(input, `Looks like this is not ${input.name}`);
-        
-    } else {
+        if (input === userEmail) {
+            formError(input, `Looks like this is not an ${input.name}`);
+        }
+        else if (input === password) {
+            formError(input, `${input.name} must be at least ${min} characters`);
+        }
+        else {
+            formError(input, `Looks like this is not a ${input.name}`);
+        }
+    } 
+    else {
         return true;
     }
 }
@@ -54,8 +59,8 @@ const formError = (input, message) => {
     const errorIcon = $(input).next(),
         errorMessage = errorIcon.next();
 
-    input.style.borderColor = "red";
-    input.style.color = "red";
+    $(input).css("border-color", "red");
+    $(input).css("color", "red");
     $(input).parent().addClass('error-shaking');
     errorIcon.show();
     errorIcon.addClass('fading-animated');
@@ -69,8 +74,8 @@ const formError = (input, message) => {
     input.addEventListener('keydown', () => {
         errorIcon.hide();
         errorMessage.text("");
-        input.style.borderColor = "rgba(128, 128, 128, 0.219)";
-        input.style.color = "#000";
+        $(input).css("border-color", "rgba(128, 128, 128, 0.219)");
+        $(input).css("color", "#000");
     });
 }
 
@@ -78,25 +83,27 @@ const formError = (input, message) => {
 trialForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const yourName = nameChecked(firstName, lastName),
-        eMail = mailChecked(userEmail),
+    const charsArrChecked = [
+        nameChecked(firstName),
+        nameChecked(lastName),
+        mailChecked(userEmail)
+    ],
         lengthArr = [
             lengthChecked(firstName, 2),
             lengthChecked(lastName, 2),
             lengthChecked(userEmail, 6),
-        ];
-
-    const formArr = [yourName, eMail, ...lengthArr]
+            lengthChecked(password, 8)
+        ]
+    const formArr = [...charsArrChecked, ...lengthArr]
     const formArrChecked = (arr) => arr.every(Boolean);
-
-    const formAllChecked = formArrChecked(formArr);
-
-    console.log(formAllChecked);    
     console.log(formArr);
-
-    switch (formAllChecked) {
+    
+    switch (formArrChecked(formArr)) {
         case true:
-            console.log('Form Pass');
+            $('button').css("cursor", "default");
+            $('button').text('Thank you');
+            $('button').prop("disabled", true);
+            console.log(firstName.value.charAt(0).toUpperCase() + firstName.value.slice(1));
             break;
         default:
             console.log('Form Fail');
