@@ -40,7 +40,7 @@ const lengthChecked = (input, min) => {
 
     } else if (input.value.length < min) {
         if (input === userEmail) {
-            formError(input, `Looks like this is not an ${input.name}`);
+            formError(input, `${input.name} is too short`);
         }
         else if (input === password) {
             formError(input, `${input.name} must be at least ${min} characters`);
@@ -59,8 +59,8 @@ const formError = (input, message) => {
     const errorIcon = $(input).next(),
         errorMessage = errorIcon.next();
 
-    $(input).css("border-color", "red");
-    $(input).css("color", "red");
+    $(input).css({"border-color": "red",
+                    "color": "red"});
     $(input).parent().addClass('error-shaking');
     errorIcon.show();
     errorIcon.addClass('fading-animated');
@@ -77,6 +77,22 @@ const formError = (input, message) => {
         $(input).css("border-color", "rgba(128, 128, 128, 0.219)");
         $(input).css("color", "#000");
     });
+}
+
+// store data to localStorage
+const storeData = () => {
+    
+    const objUserData = {
+        firstname: firstName.value,
+        lastname: lastName.value,
+        email: userEmail.value,
+        password: password.value
+    }
+
+    const jsonUserData = JSON.stringify(objUserData);
+    localStorage.setItem('userData', jsonUserData);
+
+    console.log(objUserData);
 }
 
 // Submit Form
@@ -100,13 +116,18 @@ trialForm.addEventListener('submit', (e) => {
     
     switch (formArrChecked(formArr)) {
         case true:
+            $('button').prop("disabled", true);
             $('button').css("cursor", "default");
             $('button').text('Thank you');
-            $('button').prop("disabled", true);
-            console.log(firstName.value.charAt(0).toUpperCase() + firstName.value.slice(1));
+            storeData();
             break;
         default:
             console.log('Form Fail');
             break;
     }
+});
+
+// Local Storage Clear
+window.addEventListener('unload', () => {
+    localStorage.clear();
 });
